@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XAPK 工具 - Liam Lee</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/eel.js"></script>
+</head>
+
+<body>
+    <div class="main-box">
+        <div class="container">
+            <div class="panel-left">
+                <div class="header-container">
+                    <h2 class="main-title">XAPK 工具</h2>
+                    <div class="help-container">
+                        <div class="help-icon" onclick="window.open('https://mt2.cn/', '_blank')">
+                            ?
+                        </div>
+                        <div class="help-tooltip">
+                            如何在安卓设备上安装xapk文件？
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>APK 文件</label>
+                    <div class="row">
+                        <input type="text" id="apkP" readonly placeholder="请选择 APK 文件">
+                        <button onclick="selAPK()">选择文件</button>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>OBB 数据</label>
+                    <div class="row">
+                        <input type="text" id="obbP" readonly placeholder="请选择 OBB 数据包">
+                        <button onclick="selFile('.obb')">选择文件</button>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>保存至</label>
+                    <div class="row">
+                        <input type="text" id="outP" readonly placeholder="默认桌面">
+                        <button onclick="selDir()">更改目录</button>
+                    </div>
+                </div>
+                
+                <div class="progress">
+                    <div id="pBar"></div>
+                </div>
+                <div class="progress-info">
+                    <p id="pText">准备就绪</p>
+                    <p id="pPercent">0%</p>
+                </div>
+                
+                <div class="btn-group">
+                    <button class="btn-pack" onclick="doPack()" id="b1">打包 XAPK</button>
+                    <button class="btn-inst" onclick="doInst()" id="b2">一键安装</button>
+                </div>
+            </div>
+            
+            <div class="panel-right">
+                <div class="app-info-section">
+                    <h3 class="section-title">应用信息</h3>
+                    <div class="info-card">
+                        <img id="icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="应用图标">
+                        <h3 id="aName">未检测到应用</h3>
+                        <div class="details">
+                            <p>包名: <span id="dPkg">-</span></p>
+                            <p>版本: <span id="dVer">-</span></p>
+                            <p>大小: <span id="dSize">-</span></p>
+                            <p>最低SDK: <span id="dMin">-</span></p>
+                            <p>权限: <span id="dPerm">-</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="device-section">
+                    <div class="side-header">
+                        <span class="side-title">设备连接</span>
+                        <button class="refresh-btn fixed-position" onclick="checkDev()" title="检测手机连接">
+                            <span class="refresh-icon">🔄</span>
+                        </button>
+                    </div>
+                    <div id="devStatus" class="dev-status">手机未连接</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <a href="https://www.github.com" target="_blank" class="github-link" title="View on GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="github-icon-svg">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+            </a>
+            <span class="author">Liam Lee</span>
+            <span class="version">Version：v260129_0_1</span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
